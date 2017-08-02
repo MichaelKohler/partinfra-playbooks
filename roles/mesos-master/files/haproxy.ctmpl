@@ -50,12 +50,12 @@ frontend http-in
         # Permanent redirects
         {{- range ls $redirect_301 }}
         acl redirect-{{ .Key }} hdr(host) -i {{ .Key }}
-        http-request redirect prefix http://{{ .Value }} code 301 if redirect-{{ .Key }}
+        http-request redirect prefix https://{{ .Value }} code 301 if redirect-{{ .Key }}
         {{ end }}
         # Temporary redirects
         {{- range ls $redirect_302 }}
         acl redirect-{{ .Key }} hdr(host) -i {{ .Key }}
-        http-request redirect prefix http://{{ .Value }} code 302 if redirect-{{ .Key }}
+        http-request redirect prefix https://{{ .Value }} code 302 if redirect-{{ .Key }}
         {{ end }}
 
         # Services
